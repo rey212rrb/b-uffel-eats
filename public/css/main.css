@@ -1,0 +1,82 @@
+
+@import url('menu.css');
+@import url('shoppingCar.css');
+@import url('order.css');
+@import url('admi.css');
+
+:root {
+    --buffel-green: #05321e;
+    --buffel-gold: #c59d1e;
+    --buffel-pill-bg: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-custom {
+    background-color: var(--buffel-green);
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--buffel-gold) !important;
+    font-size: 1.5rem;
+}
+
+.cart-indicator {
+    background-color: var(--buffel-pill-bg);
+    color: var(--buffel-gold);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.bi {
+    font-size: 1.2rem;
+}
+
+.buffel-footer {
+    background-color: var(--buffel-green);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 60px 0 30px 0;
+    border-top: 3px solid var(--buffel-gold);
+}
+
+.footer-brand {
+    color: var(--buffel-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.team-title {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.team-names {
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.separator {
+    color: var(--buffel-gold);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    font-size: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.bg-gold {
+    background-color: #d4af37 !important;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}

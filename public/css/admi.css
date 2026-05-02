@@ -1,0 +1,28 @@
+
+.text-gold {
+    color: #c59d1e !important;
+}
+
+.border-warning {
+    border-color: #c59d1e !important;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #c59d1e !important;
+}
+
+.btn-gold {
+    background-color: #c59d1e;
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-gold:hover {
+    background-color: #a68519;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.bg-success-subtle { background-color: #d1e7dd !important; }
+.bg-danger-subtle { background-color: #f8d7da !important; }

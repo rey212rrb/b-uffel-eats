@@ -1,0 +1,25 @@
+.card-cart {
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.img-cart {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.btn-order {
+    background-color: var(--buffel-green) !important;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-order:hover {
+    background-color: #0a4d2e !important;
+    transform: scale(1.02);
+}
+
+.text-success {
+    color: #0a4d2e !important; 
+}
