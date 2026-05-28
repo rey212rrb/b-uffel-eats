@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="py-5" style="background-color: #003121; min-height: 100vh;">
-        <div class="container">
-            <h2 class="fw-bold mb-4 text-white">Nuestro Menú</h2>
+    <div class="container py-5">
 
-            <div id="contenedorMenu" class="row g-4"></div>
+        <h2 class="fw-bold mb-4">Menú de la Cafetería</h2>
 
+        <div class="row mt-4" id="contenedorMenu">
+            <div class="col-12 text-center py-5">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Cargando menú...</span>
+                </div>
+                <p class="text-muted mt-2">Cargando delicias...</p>
+            </div>
         </div>
-    </main>
+
+    </div>
 @endsection
 
 @push('scripts')

@@ -3,7 +3,10 @@ function actualizarContadorCarrito() {
     const contador = document.getElementById('contador-articulos');
 
     if (contador) {
-        const texto = carrito.length === 1 ? '1 artículo' : `${carrito.length} artículos`;
+
+        const totalArticulos = carrito.reduce((acc, producto) => acc + (producto.cantidad || 1), 0);
+
+        const texto = totalArticulos === 1 ? '1 artículo' : `${totalArticulos} artículos`;
         contador.textContent = texto;
     }
 }

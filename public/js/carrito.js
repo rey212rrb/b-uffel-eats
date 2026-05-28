@@ -1,3 +1,5 @@
+// carrito.js
+
 function cargarCarrito() {
     const listaCarrito = document.getElementById('lista-carrito');
     const totalCompra = document.getElementById('total-compra');
@@ -85,46 +87,60 @@ function realizarPedido(event) {
 
     console.log("Iniciando petición POST a Laravel...");
 
+    // Mapeamos el carrito para enviar exactamente lo que Laravel necesita
+    const itemsFormateados = carrito.map(producto => ({
+        id: producto.id, // Es crucial que cuando agregues al carrito guardes el 'id' de la BD
+        quantity: producto.cantidad,
+        price: producto.precio
+    }));
+
     fetch('/pedidos/crear', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json', // <-- AQUÍ ESTÁ LA LÍNEA AGREGADA
             'X-CSRF-TOKEN': token
         },
         body: JSON.stringify({
-            items: carrito,
+            cart_items: itemsFormateados,
             total: totalCalculado,
-            cuenta: numCuenta
+            client_name: numCuenta
         })
     })
     .then(response => {
-        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+        if (!response.ok) {
+            // Si la respuesta no es 200 OK, lanzamos el error para leer el JSON en el catch
+            return response.json().then(errData => {
+                throw errData;
+            });
+        }
         return response.json();
     })
     .then(data => {
         console.log("Respuesta de Laravel:", data);
-        alert(data.mensaje || "Pedido procesado");
+        alert(data.message || "Pedido procesado con éxito");
 
         const datosOrden = {
-            idOrden: Math.floor(Math.random() * 90000) + 10000,
+            id: data.order_id,
             cuenta: numCuenta,
             total: `$${totalCalculado}`,
-            fecha: new Date().toLocaleString(),
-            estado: "En preparación",
             articulos: carrito
         };
 
-        let historial = JSON.parse(localStorage.getItem("historial_pedidos")) || [];
-        historial.push(datosOrden);
-        localStorage.setItem("historial_pedidos", JSON.stringify(historial));
-        localStorage.setItem('ultimoPedido', JSON.stringify(datosOrden));
+        localStorage.setItem("ultima_orden", JSON.stringify(datosOrden));
 
         localStorage.removeItem("carrito");
         window.location.href = "/order";
     })
     .catch(error => {
-        console.error('Error detallado:', error);
-        alert("Hubo un error al conectar con el servidor.");
+
+        console.error('Error detallado desde Laravel:', error);
+
+        if(error.message) {
+            alert("Error del servidor: " + error.message);
+        } else {
+            alert("Hubo un error al procesar el pedido. Revisa la consola.");
+        }
     });
 }
 
