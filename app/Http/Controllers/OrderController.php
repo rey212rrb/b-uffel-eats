@@ -8,10 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    // Método para obtener los JSON para tu admin.js (GET)
     public function getOrdersJson()
     {
-        // Obtenemos las órdenes ordenadas por la más reciente
         $orders = Order::orderBy('created_at', 'desc')->get();
         return response()->json($orders);
     }

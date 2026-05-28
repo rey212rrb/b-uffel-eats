@@ -8,7 +8,7 @@
 
         <div class="position-relative text-center text-white z-1 px-3">
             <h1 class="display-3 fw-bold mb-3">Büffel Eats</h1>
-            <p class="lead fs-4 fst-italic">CUUUUUUU, CUUUUUUUU. PUUUMAAAS</p>
+            <p class="lead fs-4 fst-italic">CUUUUUUU, CUUUUUUUU. PUUUMAAAS!!!</p>
         </div>
     </div>
 
